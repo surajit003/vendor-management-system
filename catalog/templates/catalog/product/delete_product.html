@@ -1,0 +1,36 @@
+{% extends 'catalog/new_core/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block header_tag %}
+    Product
+
+{% endblock header_tag %}
+{% block head_title %}
+    Product
+{% endblock head_title %}
+{% block active_menu %}
+    Delete Prduct
+{% endblock %}
+{% block content %}
+    <div class="row">
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">{% trans 'Product Details' %}</h3>
+            </div>
+            <div class="card-body">
+                <h3>{{ object.name }}</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <p>Are you sure you want to delete "{{ object }}"?</p>
+                    <button type="submit" class="btn btn-danger">Confirm</button>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+
+
+{% endblock content %}

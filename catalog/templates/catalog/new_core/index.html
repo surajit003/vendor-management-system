@@ -1,0 +1,14 @@
+{% extends 'catalog/new_core/base.html' %}
+
+{% block head_title %}
+    Index
+{% endblock head_title %}
+
+{% block header_tag %}
+Welcome {{ request.user.username|capfirst }}
+{% endblock header_tag %}
+{% block content %}
+    {% include 'catalog/new_core/temp_content.html' %}
+
+
+{% endblock content %}

@@ -1,0 +1,85 @@
+{% extends "catalog/core/base.html" %}
+
+{% block content %}
+
+{#    {% include 'catalog/category.html' %}#}
+
+
+    <main class="mt-5 pt-4">
+        <div class="container dark-grey-text mt-5">
+
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-4">
+
+                    <img src={{ object.get_thumbnail }} class="img-fluid" alt="">
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-6 mb-4">
+
+                    <!--Content-->
+                    <div class="p-4">
+                        <p class="lead font-weight-bold">Name</p>
+                        <p>{{ object.name }}</p>
+
+
+                        <p class="lead font-weight-bold">Description</p>
+
+                        <p>{{ object.description }}</p>
+
+                        <a href="{% url 'catalog:product_list_by_company' slug=object.slug %}">
+                                <span class="badge purple mr-1">View Products</span>
+                        </a>
+                    </div>
+                    <!--Content-->
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+            <hr>
+
+            <!--Grid row-->
+            <div class="row d-flex justify-content-center wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-md-6 text-center">
+
+                    <h4 class="my-4 h4">Additional information</h4>
+
+                    <p>{{ object.description }}</p>
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+
+                <!--Grid column-->
+                {% for img in object.get_images %}
+                    <div class="col-lg-4 col-md-12 mb-4">
+
+                        <img src="{{ img.image.url }}" class="img-fluid" alt="">
+
+                    </div>
+                {% endfor %}
+                <!--Grid column-->
+
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+
+        </div>
+    </main>
+
+{% endblock content %}

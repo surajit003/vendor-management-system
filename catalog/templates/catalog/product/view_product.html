@@ -1,0 +1,150 @@
+{% extends 'catalog/new_core/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block header_tag %}
+    Product
+
+{% endblock header_tag %}
+{% block head_title %}
+    Product
+{% endblock head_title %}
+{% block active_menu %}
+    View Product
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">{% trans 'Product Details' %}</h3>
+                </div>
+                <div class="card-body">
+                    <h3>Product Detail</h3>
+                    <div>
+                        <div class="filter-container p-0 row"
+                             style="padding: 3px; position: relative; width: 100%; display: flex; flex-wrap: wrap; height: 155px;">
+                            {% if object.image_one %}
+                                <div class="filtr-item col-sm-2">
+                                    <a href="{{ object.image_one.url }}" data-toggle="lightbox"
+                                       data-title="sample 1 - white">
+                                        <img src="{{ object.image_one.url }}" class="img-fluid mb-2" alt="white sample">
+                                    </a>
+                                </div>
+                            {% endif %}
+                            {% if object.image_two %}
+                                <div class="filtr-item col-sm-2">
+                                    <a href="{{ object.image_two.url }}" data-toggle="lightbox"
+                                       data-title="sample 1 - white">
+                                        <img src="{{ object.image_two.url }}" class="img-fluid mb-2" alt="white sample">
+                                    </a>
+                                </div>
+                            {% endif %}
+
+                            {% if object.image_three %}
+                                <div class="filtr-item col-sm-2">
+                                    <a href="{{ object.image_three.url }}" data-toggle="lightbox"
+                                       data-title="sample 1 - white">
+                                        <img src="{{ object.image_three.url }}" class="img-fluid mb-2"
+                                             alt="white sample">
+                                    </a>
+                                </div>
+                            {% endif %}
+
+                            {% if object.image_four %}
+                                <div class="filtr-item col-sm-2">
+                                    <a href="{{ object.image_four.url }}" data-toggle="lightbox"
+                                       data-title="sample 1 - white">
+                                        <img src="{{ object.image_four.url }}" class="img-fluid mb-2"
+                                             alt="white sample">
+                                    </a>
+                                </div>
+                            {% endif %}
+                            {% if object.image_five %}
+                                <div class="filtr-item col-sm-2">
+                                    <a href="{{ object.image_five.url }}" data-toggle="lightbox"
+                                       data-title="sample 1 - white">
+                                        <img src="{{ object.image_five.url }}" class="img-fluid mb-2"
+                                             alt="white sample">
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="card-body">
+                            <span class="username">Product Name - {{ object.name }}</span>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="card-body">
+                            <span class="username">Brand - {{ object.brand }}</span>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="card-body">
+                            <span class="username">SKU - {{ object.sku }}</span>
+                        </div>
+                    </div>
+
+                    <div class="post">
+                        <div class="card-body">
+                            <span class="username">Price - {{ object.price }}</span>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="card-body">
+                            <span class="username">Is Active - {{ object.is_active }}</span>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="card-body">
+                            <span class="username">Is BestSeller - {{ object.is_bestseller }}</span>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="card-body">
+                            <span class="username">Is Featured - {{ object.is_featured }}</span>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="card-body">
+                            <span class="username">Quantity - {{ object.quantity }}</span>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="card-body">
+                            <span class="username">Description - {{ object.description }}</span>
+                        </div>
+                    </div>
+                    {% for obj in object.categories.all %}
+                        <div class="post">
+                            <div class="card-body">
+                                <span class="username">Brand - {{ obj.name }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="row">
+                            <div class="col-lg-1">
+                                <a href="{% url 'catalog:product_update' object.slug %}" role="button" type="submit" class="btn btn-primary">Update</a>
+
+                            </div>
+                            <div class="col-lg-1">
+                                <a href="{% url 'catalog:product_delete' object.slug %}" role="button" type="submit" class="btn btn-primary">Delete</a>
+
+                            </div>
+                    </div>
+                  <div class="post">
+                        <div class="card-body">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.card -->
+
+        </div>
+    </div>
+
+
+{% endblock content %}

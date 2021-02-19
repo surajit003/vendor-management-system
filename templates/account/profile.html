@@ -1,0 +1,45 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Profile" %}{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container">
+            <section class="mb-4">
+                <div class="row wow fadeIn">
+                    <div class='col-6 offset-3'>
+                        <h1>{% trans "Profile" %}</h1>
+                        <form class="signup" id="signup_form" method="post" action="{% url 'user:profile' profile_id=profile_id%}">
+                            {% csrf_token %}
+                            <div id="div_id_company" class="form-group">
+                                <label for="id_company" class=" requiredField">
+                                Company<span class="asteriskField">*</span> </label>
+                                <div class=""><input type="text" name="company" placeholder="Company"
+                                                     maxlength="150"
+                                                     class="textinput textInput form-control" required="" id="id_company">
+                                </div>
+                            </div>
+                            <div id="div_id_phone_number" class="form-group">
+                                <label for="id_phone_number" class=" requiredField">
+                                Contact Number<span class="asteriskField">*</span> </label>
+                                <div class=""><input type="number" name="phone_number" placeholder="Contact Number"
+                                                     class="textinput textInput form-control" required="" id="id_phone_number">
+                                </div>
+                            </div>
+
+                           <div id="div_id_role" class="form-check">
+                               <input type="checkbox" name="vendor" class="checkboxinput form-check-input" id="id_vendor"> <label for="id_vendor" class="form-check-label">
+                               Vendor</label> &nbsp; &nbsp;&nbsp;
+                               <input type="checkbox" name="buyer" class="checkboxinput form-check-input" id="id_buyer"> <label for="id_buyer" class="form-check-label"></label>
+                               Buyer
+                           </div>
+                            <button class='btn btn-primary' type="submit">{% trans "Save" %}</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock %}
