@@ -1,9 +1,9 @@
 {% load static %}
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{% url 'catalog:index' %}" class="brand-link">
+    <a href="{% url 'catalog:home' %}" class="brand-link">
         <img src="{% static 'img/pbp.jpeg' %}" alt="" class="brand-image img-circle elevation-3">
-        <span>PBPMarketplace</span>
+        <span>VendorMS</span>
     </a>
 
     <!-- Sidebar -->
@@ -30,12 +30,19 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{% url 'catalog:product_create' %}" class="nav-link">
+                                <i class="fas fa-plus"></i>
                                 <p>Add Product</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{% url 'catalog:product_list' %}" class="nav-link active">
-                                <p>View Products</p>
+                            <a href="{% url 'catalog:home' %}" class="nav-link active">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+
+                                <p>
+                                    View Products
+
+
+                                </p>
                             </a>
                         </li>
                     </ul>

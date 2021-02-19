@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "admin_interface",
     "colorfield",
     'debug_toolbar',
+    "crispy_forms",
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -51,7 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "django_countries",
     "phonenumber_field",
-    "crispy_forms",
+    "catalog",
+    "common",
 ]
 
 MIDDLEWARE = [
@@ -155,6 +157,7 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 SITE_ID = 1
 ACCOUNT_LOGOUT_REDIRECT_URL = "/vendor/accounts/login/"
+LOGIN_REDIRECT_URL = '/vendor/catalog/'
 EMAIL_BACKEND = config("EMAIL_BACKEND")
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST = config("EMAIL_HOST")
@@ -163,3 +166,4 @@ EMAIL_USE_TLS = config("EMAIL_USE_TLS")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 SUPPORT_EMAIL = config("SUPPORT_EMAIL")
 SERVER_URL = config("SERVER_URL")
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

@@ -11,25 +11,11 @@ from django.views.generic import (
 )
 from .models import Product, Category
 from django.contrib.auth.mixins import LoginRequiredMixin
-from user.models import UserProfile
 from .forms import ProductForm
 from django.contrib import messages
 
 
 # Create your views here.
-
-
-class CategoryDetailView(DetailView):
-    model = Category
-    template_name = "catalog/single_category.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(CategoryDetailView, self).get_context_data(**kwargs)
-        products = Product.objects.filter(categories__slug=self.kwargs.get("slug"))
-        context["object_list"] = products
-        context["category"] = Category.objects.all()
-        return context
-
 
 class ProductListView(LoginRequiredMixin, ListView):
     model = Product
@@ -57,44 +43,6 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = "catalog/product/view_product.html"
 
-
-class CategoryList(ListView):
-    model = Category
-    template_name = "catalog/category.html"
-
-
-class ProductListByCompany(LoginRequiredMixin, ListView):
-    model = Product
-    paginate_by = 10
-    template_name = "catalog/home.html"
-    login_url = "/ecommerce/accounts/login"
-
-    def get_queryset(self):
-        object_list = []
-        if self.kwargs.get("slug"):
-            profile = UserProfile.objects.filter(company__slug=self.kwargs.get("slug"))
-            for p in profile:
-                product = Product.objects.filter(created_by=p.user)
-                object_list.append(product)
-        print("obe", object_list)
-        return object_list
-
-    def get_context_data(self, **kwargs):
-        context = super(ProductListByCompany, self).get_context_data(**kwargs)
-        category_list = []
-        if self.kwargs.get("slug"):
-            profile = UserProfile.objects.filter(company__slug=self.kwargs.get("slug"))
-            for p in profile:
-                category = Category.objects.filter(created_by=p.user)
-                category_list.append(category)
-        context["category_list"] = category_list
-        return context
-
-
-def Index(request):
-    return redirect(reverse("catalog:product_list"))
-
-
 class ProductCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Product
     form_class = ProductForm
@@ -103,7 +51,7 @@ class ProductCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     error_message = "Error saving the Doc, check fields below."
 
     def get_success_url(self):
-        return reverse("catalog:product_list")
+        return reverse("catalog:home")
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -126,7 +74,7 @@ class ProductUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     error_message = "Error saving the Doc, check fields below."
 
     def get_success_url(self):
-        return reverse("catalog:product_list")
+        return reverse("catalog:home")
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -147,4 +95,4 @@ class ProductDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     success_message = "Product Deleted Successfully"
 
     def get_success_url(self):
-        return reverse("catalog:product_list")
+        return reverse("catalog:home")

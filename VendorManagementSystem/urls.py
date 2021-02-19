@@ -10,6 +10,7 @@ main = [
     url(r"^admin/", admin.site.urls),
     url(r"^__debug__/", include(debug_toolbar.urls)),
     url(r"^accounts/", include("allauth.urls")),
+    url(r"^catalog/", include("catalog.urls")),
 ]
 
 urlpatterns = (

@@ -12,24 +12,9 @@ urlpatterns = [
         name="product_detail",
     ),
     url(
-        r"^category/(?P<slug>[\w-]+)$",
-        login_required(views.CategoryDetailView.as_view()),
-        name="category_detail",
-    ),
-    url(
-        r"^product/list/$",
+        r"^home/$",
         login_required(views.ProductListView.as_view()),
-        name="product_list",
-    ),
-    url(
-        r"^product/(?P<slug>[\w-]+)/list/$",
-        views.ProductListByCompany.as_view(),
-        name="product_list_by_company",
-    ),
-    url(
-        r"^index/$",
-        login_required(views.Index),
-        name="index",
+        name="home",
     ),
     url(
         r"^product/create/$",
