@@ -157,7 +157,7 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 SITE_ID = 1
 ACCOUNT_LOGOUT_REDIRECT_URL = "/vendor/accounts/login/"
-LOGIN_REDIRECT_URL = '/vendor/catalog/'
+LOGIN_REDIRECT_URL = '/vendor/catalog/home/'
 EMAIL_BACKEND = config("EMAIL_BACKEND")
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST = config("EMAIL_HOST")
