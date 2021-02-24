@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "catalog",
     "common",
+    "user",
 ]
 
 MIDDLEWARE = [
