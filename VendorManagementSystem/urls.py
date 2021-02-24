@@ -4,7 +4,6 @@ from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 import debug_toolbar
-
 app_name = "vendor"
 urlpatterns = [
     url(r"^admin/", admin.site.urls),
