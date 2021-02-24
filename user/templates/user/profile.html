@@ -1,0 +1,63 @@
+{% extends 'catalog/new_core/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block header_tag %}
+    Product
+
+{% endblock header_tag %}
+{% block head_title %}
+    Product
+{% endblock head_title %}
+{% block active_menu %}
+    View Product
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">{% trans 'Product Details' %}</h3>
+                </div>
+                <div class="card-body">
+                    <h3>Product Detail</h3>
+                    <div class="post">
+                        <div class="card-body">
+                            <span class="username">First Name - {{ object.firstname }}</span>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="card-body">
+                            <span class="username">Last Name - {{ object.lastname }}</span>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="card-body">
+                            <span class="username">Email - {{ object.email }}</span>
+                        </div>
+                    </div>
+
+              {% comment %}      <div class="row">
+                            <div class="col-lg-1">
+                                <a href="{% url 'catalog:product_update' object.slug %}" role="button" type="submit" class="btn btn-primary">Update</a>
+
+                            </div>
+                            <div class="col-lg-1">
+                                <a href="{% url 'catalog:product_delete' object.slug %}" role="button" type="submit" class="btn btn-primary">Delete</a>
+
+                            </div>
+                    </div>{% endcomment %}
+                  <div class="post">
+                        <div class="card-body">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.card -->
+
+        </div>
+    </div>
+
+
+{% endblock content %}
