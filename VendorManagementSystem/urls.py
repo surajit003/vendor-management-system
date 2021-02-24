@@ -10,7 +10,9 @@ urlpatterns = [
     url(r"^__debug__/", include(debug_toolbar.urls)),
     url(r"^accounts/", include("allauth.urls")),
     url(r"^catalog/", include("catalog.urls")),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r"^user/", include("user.urls")),
+
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = "Vendor Admin"
