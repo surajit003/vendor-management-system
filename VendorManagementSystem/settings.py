@@ -168,6 +168,7 @@ EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 SUPPORT_EMAIL = config("SUPPORT_EMAIL")
 SERVER_URL = config("SERVER_URL")
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
-ACCOUNT_FORMS = {
-            'signup': 'user.forms.SignUpForm'
-}
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_SIGNUP_FORM_CLASS = 'user.forms.SignUpForm'
+
