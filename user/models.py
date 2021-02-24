@@ -10,3 +10,7 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return str(self.profile_id)
+
+    def can_view(self, obj):
+        if obj.profile_id == self.profile_id:
+            return True
